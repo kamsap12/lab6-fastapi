@@ -35,4 +35,4 @@ jobs:
       run: |
         # Uruchomienie Pytest
         # Wskazujemy katalog, w którym znajdują się testy.
-        pytesst -v ./tests/
+        pytest -v ./tests/
