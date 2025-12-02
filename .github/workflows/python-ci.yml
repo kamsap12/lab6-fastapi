@@ -29,10 +29,10 @@ jobs:
         # Aktualizacja pip i instalacja zależności z requirements.txt
         python -m pip install --upgrade pip
         # Używamy pip install -r requirements.txt
-        pip instll -r requirements.txt
+        pip install -r requirements.txt
         
     - name: Run Pytest in tests/ directory
       run: |
         # Uruchomienie Pytest
         # Wskazujemy katalog, w którym znajdują się testy.
-        pytest -v ./tests/
+        pytesst -v ./tests/
