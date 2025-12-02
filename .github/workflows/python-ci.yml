@@ -33,6 +33,9 @@ jobs:
         
     - name: Run Pytest in tests/ directory
       run: |
+        # Ustawienie PYTHONPATH na katalog nadrzędny, 
+        # aby Python mógł znaleźć 'main.py' i 'metrics.py'
+        export PYTHONPATH=$PYTHONPATH:$(pwd)
+        
         # Uruchomienie Pytest
-        # Wskazujemy katalog, w którym znajdują się testy.
         pytest -v ./tests/
