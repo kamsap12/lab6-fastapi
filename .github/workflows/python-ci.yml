@@ -1,0 +1,38 @@
+name: FastAPI CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  test_app:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"] 
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip' 
+
+    - name: Install dependencies
+      run: |
+        # Aktualizacja pip i instalacja zależności z requirements.txt
+        python -m pip install --upgrade pip
+        # Używamy pip install -r requirements.txt
+        pip instll -r requirements.txt
+        
+    - name: Run Pytest in tests/ directory
+      run: |
+        # Uruchomienie Pytest
+        # Wskazujemy katalog, w którym znajdują się testy.
+        pytest -v ./tests/
